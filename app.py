@@ -1,8 +1,10 @@
 from flask import Flask, render_template, request
 from player import Player
 from game import Game, ValidationError
+from db import DB
 
 app = Flask(__name__)
+database = DB('mastermind.db')
 
 @app.route('/', methods=['GET'])
 def index():
@@ -24,3 +26,4 @@ def start_game():
 
     # show the game screen
     return render_template('game.html', game=game)
+

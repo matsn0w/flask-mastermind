@@ -5,7 +5,7 @@ class DB():
     def __init__(self, filename):
         self._filename = filename
         conn = db.connect(self._filename)
-        cursor = self.conn.cursor()
+        cursor = conn.cursor()
 
         cursor.execute('''
             CREATE TABLE IF NOT EXISTS games (
