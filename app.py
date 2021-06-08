@@ -2,8 +2,10 @@ from color import Color
 from flask import Flask, render_template, request
 from player import Player
 from game import Game, ValidationError
+from db import DB
 
 app = Flask(__name__)
+database = DB('mastermind.db')
 
 @app.route('/', methods=['GET'])
 def index():
