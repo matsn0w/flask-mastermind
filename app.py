@@ -3,6 +3,7 @@ from flask import Flask, render_template, request
 from player import Player
 from game import Game, ValidationError
 from db import DB
+from datetime import timezone, datetime
 
 app = Flask(__name__)
 database = DB('mastermind.db')
@@ -24,6 +25,9 @@ def start_game():
         game = Game(player, doubles, colors, positions)
     except ValidationError as e:
         return render_template('index.html', errors=e.args)
+
+    # try: 
+    #     database.saveGame(player, int(datetime.now(tz=timezone.utc).timestamp())  , 0)
 
     # show the game screen
     return render_template('game.html', game=game, colors=Color, maxcolors=colors, positions=positions)
