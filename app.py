@@ -1,3 +1,4 @@
+from color import Color
 from flask import Flask, render_template, request
 from player import Player
 from game import Game, ValidationError
@@ -23,4 +24,4 @@ def start_game():
         return render_template('index.html', errors=e.args)
 
     # show the game screen
-    return render_template('game.html', game=game)
+    return render_template('game.html', game=game, colors=Color, maxcolors=colors, positions=positions)

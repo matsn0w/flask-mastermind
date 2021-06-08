@@ -1,5 +1,19 @@
 {% extends "base.html" %}
 
 {% block content %}
-    game
+    <form action="/game" method="post">
+        <div>
+            {% for position in range(1, positions + 1) %}
+                <select name="color_{{ position }}">
+                    {% for color in colors %}
+                        {% if loop.index0 < maxcolors %}
+                            <option value="{{ color.value }}">{{ color.name|capitalize }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            {% endfor %}
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
 {% endblock %}
