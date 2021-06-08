@@ -52,7 +52,7 @@ class DB():
         
         cursor.execute("SELECT COUNT(*) FROM games WHERE player_name == :name", {'name': player_name})
         stats['games_played'] = cursor.fetchone()[0]
-        cursor.execute("SELECT date, turns_played FROM games WHERE player_name == :name", {'name': player_name})
+        cursor.execute("SELECT date, turns_played FROM games WHERE player_name == :name ORDER BY date", {'name': player_name})
         # stats['turns_per_game'] = cursor.fetchall()
         results = []
         for row in cursor:

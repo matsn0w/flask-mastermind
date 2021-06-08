@@ -13,14 +13,14 @@
 
         <table>
             <thead>
-                <th>Datum</th>
-                <th>Aantal beurten</th>
+                <th class="centerStat">Datum</th>
+                <th class="centerStat">Aantal beurten</th>
             </thead>
             <tbody>
                 {% for game in stats.turns_per_game %}
                 <tr>
-                    <td>{{game.date}}</td>
-                    <td>{{game.turns_played}}</td>
+                    <td class="centerStat">{{game.date}}</td>
+                    <td class="centerStat">{{game.turns_played}}</td>
                 </tr>
                 {% endfor %}    
             </tbody>
