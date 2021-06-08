@@ -31,7 +31,7 @@ def start_game():
     #     database.saveGame(player, int(datetime.now(tz=timezone.utc).timestamp())  , 0)
 
     # show the game screen
-    return render_template('game.html', game=game, colors=Color, maxcolors=colors, positions=positions)
+    return render_template('game.html', game=game, colors=Color)
 
 @app.route('/stats', methods=['GET'])
 def get_name():
@@ -56,6 +56,6 @@ def guess():
         guesses.append(int(value))
 
     # make the guess
-    result = game.guess(guesses)
+    results = game.guess(guesses)
 
-    # return render_template('game.html', game=game, colors=Color, maxcolors=colors, positions=positions)
+    return render_template('game.html', game=game, colors=Color)

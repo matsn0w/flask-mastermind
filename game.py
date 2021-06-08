@@ -7,10 +7,15 @@ class Game:
         self.__MIN_POSITIONS = 4
         self.__MAX_POSITIONS = 10 
 
+        self._colors = None
+        self.colors = colors
+
+        self._positions = None
+        self.positions = position
+
         self.player = player
         self.doubles = doubles
-        self._colors = colors
-        self._position = position
+        self.results = []
 
         self.generateCode()
 
@@ -23,22 +28,22 @@ class Game:
         if value < self.__MIN_COLORS or value > self.__MAX_COLORS:
             raise ValidationError(f'The amount of colors must be between {self.__MIN_COLORS} and {self.__MAX_COLORS}!')
 
-        pass
+        self._colors = value
 
     @property
-    def position(self):
-        return self._position
+    def positions(self):
+        return self._positions
 
-    @position.setter
-    def position(self, value):
+    @positions.setter
+    def positions(self, value):
         if value < self.__MIN_POSITIONS or value > self.__MAX_POSITIONS:
             raise ValidationError(f'The amount of positions must be between {self.__MIN_POSITIONS} and {self.__MAX_POSITIONS}!')
 
-        pass
+        self._positions = value
 
     def generateCode(self):
         code = []
-        for i in range(self.position): 
+        for i in range(self.positions): 
             while True:
                 number = randint(0, self.colors)
 
@@ -56,10 +61,8 @@ class Game:
                 results.append('black')
             elif num in guesses:
                 results.append('white')
-            else:
-                results.append('')
 
-        return results
+        self.results.append(results)
 
 class ValidationError(Exception):
     pass
