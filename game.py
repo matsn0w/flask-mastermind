@@ -46,7 +46,7 @@ class Game:
         code = []
         for i in range(self.positions): 
             while True:
-                number = randint(0, self.colors)
+                number = randint(1, self.colors)
 
                 if self.doubles or not number in code:
                     code.append(number)
