@@ -1,3 +1,5 @@
+from random import randint
+
 class Game:
     def __init__(self, player, doubles = False, colors = 6, position = 4):
         self.__MIN_COLORS = 6
@@ -7,8 +9,10 @@ class Game:
 
         self.player = player
         self.doubles = doubles
-        self.colors = colors
-        self.position = position
+        self._colors = colors
+        self._position = position
+
+        self.generateCode()
 
     @property
     def colors(self):
@@ -31,6 +35,23 @@ class Game:
             raise ValidationError(f'The amount of positions must be between {self.__MIN_POSITIONS} and {self.__MAX_POSITIONS}!')
 
         pass
+
+    def generateCode(self):
+        code = []
+        for i in range(self.position): 
+            while True:
+                number = randint(0, self.colors)
+
+                if self.doubles or not number in code:
+                    code.append(number)
+                    break
+
+        self.code = code
+        
+
+
+
+        
 
 class ValidationError(Exception):
     pass
