@@ -7,19 +7,20 @@
     {% else %}
         <h3>Statistics for player: {{ name }}</h3>
 
-        <p><strong>Games Played:</strong> {{stats.games_played}}</p>
+        <p><strong>Games Played:</strong> {{ stats.games_played }}</p>
 
         <table>
             <thead>
                 <th class="centerStat">Date</th>
                 <th class="centerStat">Amount of turns</th>
             </thead>
+
             <tbody>
                 {% for game in stats.turns_per_game %}
-                <tr>
-                    <td class="centerStat">{{game.date}}</td>
-                    <td class="centerStat">{{game.turns_played}}</td>
-                </tr>
+                    <tr>
+                        <td class="centerStat">{{ game.date }}</td>
+                        <td class="centerStat">{{ game.turns_played }}</td>
+                    </tr>
                 {% endfor %}    
             </tbody>
         </table> 
