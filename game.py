@@ -60,7 +60,9 @@ class Game:
         for i, num in enumerate(self.code):
             if num == guesses[i]:
                 results.append('black')
-            elif num in guesses:
+
+        for i, num in enumerate(self.code):
+            if num in guesses and num != guesses[i]:
                 results.append('white')
 
         self.results.append(results)
