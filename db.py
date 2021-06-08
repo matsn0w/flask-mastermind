@@ -1,7 +1,6 @@
 import sqlite3 as db
 from datetime import datetime
 
-
 class DB():
     def __init__(self, filename):
         self._filename = filename
@@ -64,5 +63,3 @@ class DB():
         conn.commit()
         conn.close()
         return stats
-
-    
