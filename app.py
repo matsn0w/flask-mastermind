@@ -33,6 +33,17 @@ def start_game():
     # show the game screen
     return render_template('game.html', game=game, colors=Color, maxcolors=colors, positions=positions)
 
+@app.route('/stats', methods=['GET'])
+def get_name():
+    return render_template('name_form.html')
+
+@app.route('/stats', methods=['POST'])
+def show_statistics():
+    name = request.form['player_name']
+    stats = database.getStatisticsByName(name)
+
+    return render_template('stats.html', stats=stats, name=name)
+
 @app.route('/game', methods=['POST'])
 def guess():
     guesses = []

@@ -1,4 +1,5 @@
 import sqlite3 as db
+from datetime import datetime
 
 
 class DB():
@@ -51,9 +52,15 @@ class DB():
         
         cursor.execute("SELECT COUNT(*) FROM games WHERE player_name == :name", {'name': player_name})
         stats['games_played'] = cursor.fetchone()[0]
-        cursor.execute("SELECT * FROM games WHERE player_name == :name", {'name': player_name})
-        stats['turns_per_game'] = cursor.fetchall()
-        
+        cursor.execute("SELECT date, turns_played FROM games WHERE player_name == :name", {'name': player_name})
+        # stats['turns_per_game'] = cursor.fetchall()
+        results = []
+        for row in cursor:
+            results.append({
+                'date': datetime.utcfromtimestamp(row[0]).strftime('%Y-%m-%d %H:%M:%S'),
+                'turns_played': row[1]
+                })
+        stats['turns_per_game'] = results
         conn.commit()
         conn.close()
         return stats

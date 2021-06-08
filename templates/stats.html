@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+    
+
+    {% if stats.games_played == 0 %}
+        <h3>We hebben geen resultaten voor de speler {{name}} gevonden.</h3>
+        <p>(<strong>LET OP!</strong> Hoofdlettergevoelig)</p>
+    {% else %}
+        <h3>Statistieken voor speler: {{ name }}</h3>
+
+        <p><strong>Games Played:</strong> {{stats.games_played}}</p>
+
+        <table>
+            <thead>
+                <th>Datum</th>
+                <th>Aantal beurten</th>
+            </thead>
+            <tbody>
+                {% for game in stats.turns_per_game %}
+                <tr>
+                    <td>{{game.date}}</td>
+                    <td>{{game.turns_played}}</td>
+                </tr>
+                {% endfor %}    
+            </tbody>
+        </table> 
+    {% endif %}
+
+    <a href="/stats">Terug</a>
+    <a href="/">Home</a>
+{% endblock %}
