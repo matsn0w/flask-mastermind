@@ -1,0 +1,32 @@
+/* Forms */
+
+.field {
+    margin-bottom: 1rem;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+}
+
+/* Game results */
+
+.result {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.black {
+    background-color: #000000;
+}
+
+.white {
+    background-color: #ffffff;
+}
+
+.pin {
+    width: 10px;
+    height: 10px;
+    border: solid 1px #000000;
+}

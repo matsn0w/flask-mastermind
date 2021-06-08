@@ -11,23 +11,23 @@
     {% endif %}
 
     <form action="/" method="post">
-        <div>
+        <div class="field">
             <label for="player_name">Nickname</label>
             <input type="text" name="player_name" id="player_name" required>
         </div>
 
-        <div>
+        <div class="field">
             <label for="use_doubles">Use double colors?</label>
             <input type="radio" name="use_doubles">Yes
             <input type="radio" name="use_doubles" checked>No
         </div>
 
-        <div>
+        <div class="field">
             <label for="amount_colors">Amount of colors</label>
             <input type="number" name="amount_colors" id="amount_colors" min="6" max="10" value="6" required>
         </div>
 
-        <div>
+        <div class="field">
             <label for="amount_positions">Amount of positions</label>
             <input type="number" name="amount_positions" id="amount_positions" min="4" max="10" value="4" required>
         </div>

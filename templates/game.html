@@ -1,8 +1,16 @@
 {% extends "base.html" %}
 
 {% block content %}
+    {# some for loop here soon... #}
+        <div class="result">
+            {% for position in range(positions) %}
+                <div class="pin black"></div>
+            {% endfor %}
+        </div>
+    {# endfor #}
+
     <form action="/game" method="post">
-        <div>
+        <div class="field">
             {% for position in range(1, positions + 1) %}
                 <select name="color_{{ position }}">
                     {% for color in colors %}
