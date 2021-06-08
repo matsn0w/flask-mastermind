@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h3>Statistieken voor speler: {{ name }}</h3>
+    <p><strong>Games Played:</strong> {{stats.games_played}}</p>
+
+    <table>
+        <thead>
+            <th>Datum</th>
+            <th>Aantal beurten</th>
+        </thead>
+        <tbody>
+            {% for game in stats.turns_per_game %}
+            <tr>
+                <td>{{game.date}}</td>
+                <td>{{game.turns_played}}</td>
+            </tr>
+            {% endfor %}    
+        </tbody>
+    </table>
+    
+{% endblock %}
