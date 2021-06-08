@@ -1,8 +1,9 @@
-from color import Color
 from flask import Flask, render_template, request
-from player import Player
-from game import Game, ValidationError
+from werkzeug.utils import redirect
 from db import DB
+from game import Game, ValidationError
+from player import Player
+from color import Color
 from datetime import timezone, datetime
 
 app = Flask(__name__)
@@ -58,6 +59,21 @@ def guess():
         guesses.append(int(value))
 
     # make the guess
-    results = game.guess(guesses)
+    game.guess(guesses)
+
+    # check if the player won
+    if game.win():
+        return redirect('/win')
 
     return render_template('game.html', game=game, colors=Color)
+
+@app.route('/win')
+def win():
+    colors = []
+
+    for c in game.code:
+        colors.append(Color(c).name)
+
+    code = ', '.join(colors)
+
+    return render_template('win.html', game=game, code=code)

@@ -17,6 +17,7 @@ class Game:
         self.doubles = doubles
         self.cheats = cheats
         self.results = []
+        self.turns = 0
 
         self.generateCode()
 
@@ -66,6 +67,19 @@ class Game:
                 results.append('white')
 
         self.results.append(results)
+        self.turns += 1
+
+    def win(self):
+        test = self.results[-1]
+
+        if len(test) < self.positions:
+            return False
+
+        for r in test:
+            if r != 'black':
+                return False
+
+        return True
 
 class ValidationError(Exception):
     pass
