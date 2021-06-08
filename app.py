@@ -17,13 +17,14 @@ def start_game():
     # extract form data
     player = Player(request.form['player_name'])
     doubles = True if request.form['use_doubles'] == 'on' else False
+    cheats = True if request.form['use_cheats'] == 'on' else False
     colors = int(request.form['amount_colors'])
     positions = int(request.form['amount_positions'])
     global game
 
     try:
         # create a new game
-        game = Game(player, doubles, colors, positions)
+        game = Game(player, doubles, cheats, colors, positions)
     except ValidationError as e:
         return render_template('index.html', errors=e.args)
 

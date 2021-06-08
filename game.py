@@ -1,7 +1,7 @@
 from random import randint
 
 class Game:
-    def __init__(self, player, doubles = False, colors = 6, position = 4):
+    def __init__(self, player, doubles = False, cheats = False, colors = 6, position = 4):
         self.__MIN_COLORS = 6
         self.__MAX_COLORS = 10
         self.__MIN_POSITIONS = 4
@@ -15,6 +15,7 @@ class Game:
 
         self.player = player
         self.doubles = doubles
+        self.cheats = cheats
         self.results = []
 
         self.generateCode()

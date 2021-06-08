@@ -4,17 +4,17 @@
     
 
     {% if stats.games_played == 0 %}
-        <h3>We hebben geen resultaten voor de speler {{name}} gevonden.</h3>
-        <p>(<strong>LET OP!</strong> Hoofdlettergevoelig)</p>
+        <h3>We have not found any records for player {{name}}.</h3>
+        <p>(<strong>WARNING!</strong> Case sensitive)</p>
     {% else %}
-        <h3>Statistieken voor speler: {{ name }}</h3>
+        <h3>Statistics for player: {{ name }}</h3>
 
         <p><strong>Games Played:</strong> {{stats.games_played}}</p>
 
         <table>
             <thead>
-                <th class="centerStat">Datum</th>
-                <th class="centerStat">Aantal beurten</th>
+                <th class="centerStat">Date</th>
+                <th class="centerStat">Amount of turns</th>
             </thead>
             <tbody>
                 {% for game in stats.turns_per_game %}
@@ -27,6 +27,6 @@
         </table> 
     {% endif %}
 
-    <a href="/stats">Terug</a>
+    <a href="/stats">Back</a>
     <a href="/">Home</a>
 {% endblock %}
