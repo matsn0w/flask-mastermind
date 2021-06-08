@@ -9,10 +9,10 @@ class DB():
 
         cursor.execute('''
             CREATE TABLE IF NOT EXISTS games (
-                id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
-                player_name TEXT NOT NULL, 
-                date DATE NOT NULL, 
-                turns_played INTEGER NOT NULL
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                player_name TEXT, 
+                date INTEGER, 
+                turns_played INTEGER
             )'''
         )
         conn.commit()
@@ -30,14 +30,14 @@ class DB():
     def saveGame(self, name, date, turns_played):
         conn = db.connect(self._filename)
         cursor = conn.cursor()
-        cursor.execute("INSERT INTO games (player_name, date, turns_played)' VALUES (?, ?, ?)", {name, date, turns_played})
+        cursor.execute("INSERT INTO games (player_name, date, turns_played) VALUES (:name, :date, :turns)", {'name': name, 'date': date, 'turns': turns_played})
         conn.commit()
         conn.close()
     
     def getGame(self, game_id):
         conn = db.connect(self._filename)
         cursor = conn.cursor()
-        cursor.execute("SELECT * FROM games WHERE games.id == ?", {game_id})
+        cursor.execute("SELECT * FROM games WHERE games.id == :id", {'id': game_id})
         game = cursor.fetchone()[0]
         conn.commit()
         conn.close()
@@ -49,9 +49,9 @@ class DB():
         conn = db.connect(self._filename)
         cursor = conn.cursor()
         
-        cursor.execute("SELECT COUNT(*) FROM games WHERE player_name == ?", {player_name})
+        cursor.execute("SELECT COUNT(*) FROM games WHERE player_name == :name", {'name': player_name})
         stats['games_played'] = cursor.fetchone()[0]
-        cursor.execute("SELECT * FROM games WHERE player_name == ?", {player_name})
+        cursor.execute("SELECT * FROM games WHERE player_name == :name", {'name': player_name})
         stats['turns_per_game'] = cursor.fetchall()
         
         conn.commit()
