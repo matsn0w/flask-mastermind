@@ -19,6 +19,7 @@ def start_game():
     doubles = True if request.form['use_doubles'] == 'on' else False
     colors = int(request.form['amount_colors'])
     positions = int(request.form['amount_positions'])
+    global game
 
     try:
         # create a new game
@@ -31,3 +32,19 @@ def start_game():
 
     # show the game screen
     return render_template('game.html', game=game, colors=Color, maxcolors=colors, positions=positions)
+
+@app.route('/game', methods=['POST'])
+def guess():
+    guesses = []
+
+    # extract form data
+    data = request.form.items()
+
+    for key, value in data:
+        # add int value to guesses array
+        guesses.append(int(value))
+
+    # make the guess
+    result = game.guess(guesses)
+
+    # return render_template('game.html', game=game, colors=Color, maxcolors=colors, positions=positions)

@@ -47,11 +47,19 @@ class Game:
                     break
 
         self.code = code
-        
 
+    def guess(self, guesses):
+        results = []
 
+        for i, num in enumerate(self.code):
+            if num == guesses[i]:
+                results.append('black')
+            elif num in guesses:
+                results.append('white')
+            else:
+                results.append('')
 
-        
+        return results
 
 class ValidationError(Exception):
     pass
