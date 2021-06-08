@@ -13,6 +13,7 @@
             <thead>
                 <th class="centerStat">Date</th>
                 <th class="centerStat">Amount of turns</th>
+                <th class="centerStat">Used cheats</th>
             </thead>
 
             <tbody>
@@ -20,6 +21,7 @@
                     <tr>
                         <td class="centerStat">{{ game.date }}</td>
                         <td class="centerStat">{{ game.turns_played }}</td>
+                        <td class="centerStat">{% if game.used_cheats %} Yes {% else %} No {% endif %}</td>
                     </tr>
                 {% endfor %}    
             </tbody>
