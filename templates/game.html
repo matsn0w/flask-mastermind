@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
-    {# if cheat #}
+    {% if game.cheats %}
         {{ game.code }}
-    {# endif #}
+    {% endif %}
 
     {% if game.results %}
         {% for result in game.results %}
