@@ -15,9 +15,10 @@ def index():
 @app.route('/', methods=['POST'])
 def start_game():
     # extract form data
+    print(request.form)
     player = Player(request.form['player_name'])
-    doubles = True if request.form['use_doubles'] == 'on' else False
-    cheats = True if request.form['use_cheats'] == 'on' else False
+    doubles = True if request.form['use_doubles'] == 'yes' else False
+    cheats = True if request.form['use_cheats'] == 'yes' else False
     colors = int(request.form['amount_colors'])
     positions = int(request.form['amount_positions'])
     global game
