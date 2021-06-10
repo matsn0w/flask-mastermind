@@ -1,11 +1,13 @@
-from errors.validationerror import ValidationError
+from datetime import datetime, timezone
+
 from flask import Flask, render_template, request
 from werkzeug.utils import redirect
+
 from db import DB
-from game import Game
-from player import Player
-from color import Color
-from datetime import timezone, datetime
+from errors.validationerror import ValidationError
+from models.color import Color
+from models.game import Game
+from models.player import Player
 
 app = Flask(__name__)
 database = DB('mastermind.db')

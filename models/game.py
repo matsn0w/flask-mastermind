@@ -1,4 +1,5 @@
 from random import randint
+from errors.validationerror import ValidationError
 
 class Game:
     def __init__(self, player, doubles = False, cheats = False, colors = 6, position = 4):
