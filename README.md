@@ -1,6 +1,12 @@
 # Flask Mastermind
 Simple Mastermind-like game built in Flask
 
+## Contributors
+| name          | id      |
+|---------------|---------|
+| Niels van Hal | 2159178 |
+| Bart Scholtus | 2150146 |
+
 ## System requirements
 - Python 3
 - Flask (`pip install flask`)
