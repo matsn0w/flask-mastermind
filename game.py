@@ -80,6 +80,3 @@ class Game:
                 return False
 
         return True
-
-class ValidationError(Exception):
-    pass

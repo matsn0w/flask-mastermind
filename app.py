@@ -1,7 +1,8 @@
+from errors.validationerror import ValidationError
 from flask import Flask, render_template, request
 from werkzeug.utils import redirect
 from db import DB
-from game import Game, ValidationError
+from game import Game
 from player import Player
 from color import Color
 from datetime import timezone, datetime
@@ -16,8 +17,6 @@ def index():
 @app.route('/', methods=['POST'])
 def start_game():
     # extract form data
-    print(request.form)
-    player = Player(request.form['player_name'])
     doubles = True if request.form['use_doubles'] == 'yes' else False
     cheats = True if request.form['use_cheats'] == 'yes' else False
     colors = int(request.form['amount_colors'])
@@ -25,13 +24,11 @@ def start_game():
     global game
 
     try:
-        # create a new game
+        # create a new player and game
+        player = Player(request.form['player_name'])
         game = Game(player, doubles, cheats, colors, positions)
     except ValidationError as e:
         return render_template('index.html', errors=e.args)
-
-    # try: 
-    #    
 
     # show the game screen
     return render_template('game.html', game=game, colors=Color)
@@ -43,9 +40,7 @@ def get_name():
 @app.route('/stats', methods=['POST'])
 def show_statistics():
     name = request.form['player_name']
-    print(name)
     stats = database.getStatisticsByName(name)
-    print(stats)
     return render_template('stats.html', stats=stats, name=name)
 
 @app.route('/game', methods=['POST'])
