@@ -28,10 +28,10 @@ class DB():
     def filename(self, value):
         self._filename = value
 
-    def saveGame(self, name, date, turns_played, has_cheated):
+    def saveGame(self, player, date, turns_played, has_cheated):
         conn = db.connect(self._filename)
         cursor = conn.cursor()
-        cursor.execute("INSERT INTO games (player_name, date, turns_played, used_cheats) VALUES (:name, :date, :turns, :cheated)", {'name': name.lower(), 'date': date, 'turns': turns_played, 'cheated': has_cheated})
+        cursor.execute("INSERT INTO games (player_name, date, turns_played, used_cheats) VALUES (:name, :date, :turns, :cheated)", {'name': player.name.lower(), 'date': date, 'turns': turns_played, 'cheated': has_cheated})
         conn.commit()
         conn.close()
     
