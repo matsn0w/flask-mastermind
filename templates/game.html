@@ -26,7 +26,7 @@
                 <select name="color_{{ position }}">
                     {% for color in colors %}
                         {% if loop.index0 < game._colors %}
-                            <option value="{{ color.value }}">{{ color.name|capitalize }}</option>
+                            <option value="{{ color.value }}" {{ 'selected' if guesses[position-1] == color.value }}>{{ color.name|capitalize }}</option>
                         {% endif %}
                     {% endfor %}
                 </select>

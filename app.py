@@ -33,7 +33,7 @@ def start_game():
         return render_template('index.html', errors=e.args)
 
     # show the game screen
-    return render_template('game.html', game=game, colors=Color)
+    return render_template('game.html', game=game, colors=Color, guesses=[])
 
 @app.route('/stats', methods=['GET'])
 def get_name():
@@ -64,7 +64,7 @@ def guess():
         database.saveGame(game.player, int(datetime.now(tz=timezone.utc).timestamp()), game.turns, game.cheats)
         return redirect('/win')
 
-    return render_template('game.html', game=game, colors=Color)
+    return render_template('game.html', game=game, colors=Color, guesses=guesses)
 
 @app.route('/win')
 def win():
