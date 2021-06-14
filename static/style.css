@@ -1,0 +1,85 @@
+/* Forms */
+
+.field {
+    margin-bottom: 1rem;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+}
+
+/* Game results */
+
+.black {
+    background-color: black;
+}
+
+.white {
+    background-color: white;
+}
+
+.color-1 {
+    background-color: red;
+}
+
+.color-2 {
+    background-color: blue;
+}
+
+.color-3 {
+    background-color: green;
+}
+
+.color-4 {
+    background-color: yellow;
+}
+
+.color-5 {
+    background-color: orange;
+}
+
+.color-6 {
+    background-color: brown;
+}
+
+.color-7 {
+    background-color: purple;
+}
+
+.color-8 {
+    background-color: grey;
+}
+
+.color-9 {
+    background-color: pink;
+}
+
+.color-10 {
+    background-color: beige;
+}
+
+.result,
+.code {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.pin {
+    width: 10px;
+    height: 10px;
+    border: solid 1px #000000;
+}
+
+.num {
+    width: 30px;
+    height: 30px;
+}
+
+.centerStat {
+    text-align: center;
+    padding: 0.5rem;
+    margin-right: 0.5;
+}

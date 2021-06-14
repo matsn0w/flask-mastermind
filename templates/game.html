@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% if game.cheats %}
+        <div class="code">
+            {% for num in game.code %}
+                <div class="num color-{{ num }}"></div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    {% if game.results %}
+        {% for result in game.results %}
+            <div class="result">
+                <span>{{ loop.index }}</span>
+                {% for r in result %}
+                    <div class="pin {{ r }}"></div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <form action="/game" method="post">
+        <div class="field">
+            {% for position in range(1, game.positions + 1) %}
+                <select name="color_{{ position }}">
+                    {% for color in colors %}
+                        {% if loop.index0 < game._colors %}
+                            <option value="{{ color.value }}" {{ 'selected' if guesses[position-1] == color.value }}>{{ color.name|capitalize }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            {% endfor %}
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <a href="/">Home</a>
+{% endblock %}

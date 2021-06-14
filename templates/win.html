@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>You won!</h2>
+
+    <p>
+        Your name: {{ game.player.name }}<br>
+        The code was: {{ code }}<br>
+        You needed {{ game.turns }} turns
+    </p>
+
+    <a href="/">Home</a>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% if stats.games_played == 0 %}
+        <h3>We have not found any records for player {{name}}.</h3>
+        <p>(Check if the name is spelled correctly)</p>
+    {% else %}
+        <h3>Statistics for player: {{ name }}</h3>
+
+        <p><strong>Games Played:</strong> {{ stats.games_played }}</p>
+
+        <table>
+            <thead>
+                <th class="centerStat">Date</th>
+                <th class="centerStat">Amount of turns</th>
+                <th class="centerStat">Used cheats</th>
+            </thead>
+
+            <tbody>
+                {% for game in stats.turns_per_game %}
+                    <tr>
+                        <td class="centerStat">{{ game.date }}</td>
+                        <td class="centerStat">{{ game.turns_played }}</td>
+                        <td class="centerStat">{% if game.used_cheats %} Yes {% else %} No {% endif %}</td>
+                    </tr>
+                {% endfor %}    
+            </tbody>
+        </table> 
+    {% endif %}
+
+    <a href="/stats">Back</a>
+    <a href="/">Home</a>
+{% endblock %}
